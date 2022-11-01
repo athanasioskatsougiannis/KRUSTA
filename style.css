@@ -1,0 +1,38 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  padding-top: 80px;
+
+}
+
+li {
+  font-family: Helvetica, sans-serif;
+  font-size: 18;
+  text-align: center;
+  padding: 40px 0;
+}
+
+a {
+  text-decoration:none;
+  color: black;
+
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+p {
+  font-family: Helvetica, sans-serif;
+  font-size: 15px;
+  padding-left: 20px;
+
+}
