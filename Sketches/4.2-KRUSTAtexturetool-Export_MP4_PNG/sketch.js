@@ -15,6 +15,7 @@ let angle = 0;
 var pressed = false;
 let checkboxW;
 let checkboxT;
+let checkboxC;
 
 
 ///////
@@ -46,10 +47,10 @@ function preload() {
   Medium = loadFont('Orleans-Medium-Trial.otf');
 }
 
-P5Capture.setDefaultOptions({
+/*P5Capture.setDefaultOptions({
   width: 3840,
   height: 3840
-});
+});*/
 
 
 function setup() {
@@ -161,9 +162,9 @@ function createControlPanel() {
   createP('Presets').position(width + 40, 350).style('font-size','13px').style('font-family','sans-serif');
   MotionOne = createButton('A'); MotionOne.position(width + 40, 385).style('padding','6px').style('border-radius','2px').style('font-size','13px').style('font-family','sans-serif');
   MotionOne.mousePressed(MotionA); 
-  checkboxW = createCheckbox('', false); checkboxW.position(width + 90, 175).style('padding','6px').style('border-radius','2px').style('font-size','13px').style('font-family','sans-serif');
+  checkboxW = createCheckbox('', false); checkboxW.position(width + 90, 175).style('padding','6px').style('border-radius','2px')
   checkboxW.changed(myCheckedEvent);
-  checkboxT = createCheckbox('', false); checkboxT.position(width + 112, 175).style('padding','6px').style('border-radius','2px').style('font-size','13px').style('font-family','sans-serif');
+  checkboxT = createCheckbox('', false); checkboxT.position(width + 112, 175).style('padding','6px').style('border-radius','2px')
   checkboxT.changed(myCheckedEvent);
   MotionTwo = createButton('B'); MotionTwo.position(width + 70, 385).style('padding','6px').style('border-radius','2px').style('font-size','13px').style('font-family','sans-serif');
   MotionTwo.mousePressed(MotionB);
@@ -178,6 +179,9 @@ function createControlPanel() {
   selC.option('Tall');
   selC.selected('Square');
   selC.changed(setCanvasSize);
+
+  checkboxC = createCheckbox('', false); checkboxC.position(width + 255, 376).style('padding','6px').style('border-radius','2px')
+  checkboxC.changed(myCheckedEventC);
   
   createP('Font').position(width + 210, 490).style('font-size','13px').style('font-family','sans-serif');
   selF = createSelect();
@@ -267,10 +271,10 @@ function setCanvasSize() {
     myScaledCanvas = createGraphics(wS, hS);
     canvas = createCanvas(wS, hS);
 
-    P5Capture.setDefaultOptions({
+    /*P5Capture.setDefaultOptions({
       width: 3840,
       height: 3840
-    });
+    });*/
 
     } 
     else if (selCANVAS == 'Wide') {
@@ -281,10 +285,10 @@ function setCanvasSize() {
     myScaledCanvas = createGraphics(wW, hW);
     canvas = createCanvas(wW, hW);
 
-    P5Capture.setDefaultOptions({
+    /*P5Capture.setDefaultOptions({
       width: 3840,
       height: 2160
-    });
+    });*/
 
     } 
     else if (selCANVAS == 'Tall') {
@@ -295,13 +299,35 @@ function setCanvasSize() {
     myScaledCanvas = createGraphics(wT, hT);
     canvas = createCanvas(wT, hT);
 
+    /*P5Capture.setDefaultOptions({
+      width: 2160,
+      height: 3840
+    });*/
+
+  }
+}
+
+function myCheckedEventC() {
+  if (checkboxC.checked() && selC.value() == 'Square') {
+    P5Capture.setDefaultOptions({
+      width: 3840,
+      height: 3840
+    });
+    console.log('Checking C');
+  } else if (checkboxC.checked() && selC.value() == 'Wide') {
+    P5Capture.setDefaultOptions({
+      width: 3840,
+      height: 2160
+    });
+    console.log('Checking C');
+  } else if (checkboxC.checked() && selC.value() == 'Tall') {
     P5Capture.setDefaultOptions({
       width: 2160,
       height: 3840
     });
-
-  
-
+    console.log('Checking C'); 
+  } else {
+    console.log('Unchecking');
   }
 }
 
