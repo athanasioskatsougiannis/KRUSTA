@@ -1,0 +1,21 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 1px solid #000;
+  padding: 7px;
+  font-family: sans-serif;
+  font-size: 13px;
+  
+}
+
+input {
+  padding-left: 8px;
+}

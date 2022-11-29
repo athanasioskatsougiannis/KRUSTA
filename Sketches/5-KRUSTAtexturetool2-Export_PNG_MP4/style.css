@@ -1,0 +1,32 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
+
+
+
+/*save-box*/
+.p5c-container {
+  top: 370px !important;
+  left: 978px !important;
+  font-family: sans-serif !important;
+  font-size: 13px !important;
+  color: black !important;
+  background: rgba(255, 255, 255, 1.0) !important;
+  border-radius: 2px !important;
+  border: 1px solid #7a7e82 !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 0 #4a5568 !important;
+}
+
+.p5c-format,
+.p5c-framerate {
+    color: black !important;
+    background: white !important;
+    border: 1px solid #7a7e82 !important;
+    border-radius: 6px;
+    outline: none;
+}
