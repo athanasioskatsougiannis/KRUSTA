@@ -1,0 +1,196 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Tools menu */
+body {
+	background: #ffffff;
+	font-size:14px;
+	line-height: 20px;
+	color: #000000;
+	word-wrap:break-word !important;
+	font-family: Helvetica, sans-serif;
+}
+
+#SidePanel {
+  left: 808px;
+  position: absolute;
+}
+
+
+h1 {
+	font-size: 17px;
+	color: #000000;
+}	
+
+h2 {
+	font-size: 13px;
+  font-weight: 100;
+	color: #000000;
+  margin: 15px 0 5px 0;
+}	
+
+
+p {
+	font-size: 13px;
+  font-weight: 100;
+	color: #000000;
+}	
+
+#container {
+	margin: 10px auto;
+}
+
+nav {
+	margin: 0px 0;
+	background-color: #ffffff;
+}
+
+nav ul {
+	padding: 0;
+  margin: 0;
+	list-style: none;
+	position: relative;
+	}
+	
+nav ul li {
+	display:inline-block;
+	background-color: #ffffff;
+  border-left: 1.5px solid black;
+	}
+
+nav a {
+	display:block;
+	padding:0 10px;	
+	color:#000000;
+	font-size:14px;
+	line-height: 20px;
+  font-weight: 100;
+	text-decoration:none;
+}
+
+nav a:hover { 
+	background-color: #f0f0f0; 
+}
+
+/* Hide Dropdowns by Default */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	top: 20px; /* the height of the main nav */
+}
+	
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+	display:grid;
+  /* padding-left: 10px; */
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:120px;
+	float:none;
+	display:list-item;
+	position:relative;
+}
+
+/* Second, Third and more Tiers	*/
+nav ul ul ul li {
+	position: relative;
+	top:-20px; 
+	left:120px;
+}
+
+	
+/* Change this in order to change the Dropdown symbol */
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+
+
+/* Tools menu */
+
+
+/* P5 JS */
+canvas {
+  display: block;
+}
+
+button {
+  background-color: white;
+  color: black;
+  border: 1px solid #5b5b5b;
+  border-radius: 2px;
+  padding: 2px 8px;
+  font-family: sans-serif;
+  font-size: 13px;
+  
+}
+
+#inpFrame {
+  width: 390px;
+  height: 25px;
+  position:relative;
+  padding-left: 6px;
+}
+
+input[type=text] {
+  padding-left: 6px;
+}
+
+button:focus {
+  background-color: #f0f0f0;
+  border: 1px solid #f0f0f0;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 2px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%; 
+  background: #1b1b1b;
+  cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #1b1b1b;
+  cursor: pointer;
+}
+
+/*save-box*/
+.p5c-container {
+  top: 660px !important;
+  left: 809px !important;
+  font-family: sans-serif !important;
+  font-size: 13px !important;
+  color: black !important;
+  background: rgba(255, 255, 255, 1.0) !important;
+  border-radius: 2px !important;
+  border: 1px solid rgb(72, 71, 71) !important;
+  text-shadow: none !important;
+  box-shadow: 0 0 0 #4a5568 !important;
+}
+
+.p5c-format,
+.p5c-framerate {
+    color: black !important;
+    background: white !important;
+    border: 1px solid #7a7e82 !important;
+    border-radius: 6px;
+    outline: none;
+}
