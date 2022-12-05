@@ -6,33 +6,97 @@ canvas {
   display: block;
 }
 
-ul {
-  list-style-type: none;
-  width: 500px;
-  margin: 150px auto 0 auto;
+/* Tools menu */
+body {
+	background: #ffffff;
+	font-size: 16px;
+	line-height: 20px;
+	color: #000000;
+	word-wrap:break-word !important;
+	font-family: Helvetica, sans-serif;
 }
 
-li {
-  font-family: Helvetica, sans-serif;
-  font-size: 18;
-  text-align: left;
-  padding: 35px 0;
+#SidePanel {
+  left: 35%;
+  position: absolute;
 }
 
 a {
   text-decoration:none;
   color: black;
-
 }
-
 a:hover {
   text-decoration: underline;
 }
 
-
-p {
-  font-family: Helvetica, sans-serif;
-  font-size: 15px;
-  padding-left: 20px;
-
+#container {
+	margin: 10px auto;
 }
+
+nav {
+	margin: 0px 0;
+	background-color: #ffffff;
+}
+
+nav ul {
+	padding: 0;
+  margin: 0;
+	list-style: none;
+	position: relative;
+	}
+	
+nav ul li {
+	display:inline-block;
+	background-color: #ffffff;
+  border-left: 1.5px solid black;
+	}
+
+nav a {
+	display:block;
+	padding:0 10px;	
+	color:#000000;
+	font-size: 18px;
+	line-height: 20px;
+  font-weight: 100;
+	text-decoration:none;
+}
+
+nav a:hover { 
+	background-color: #f0f0f0; 
+}
+
+/* Hide Dropdowns by Default */
+nav ul ul {
+	display: none;
+	position: absolute; 
+	top: 20px; /* the height of the main nav */
+}
+	
+/* Display Dropdowns on Hover */
+nav ul li:hover > ul {
+	display:grid;
+  /* padding-left: 10px; */
+}
+	
+/* Fisrt Tier Dropdown */
+nav ul ul li {
+	width:120px;
+	float:none;
+	display:list-item;
+	position:relative;
+}
+
+/* Second, Third and more Tiers	*/
+nav ul ul ul li {
+	position: relative;
+	top:-20px; 
+	left:120px;
+}
+
+	
+/* Change this in order to change the Dropdown symbol */
+li > a:after { content:  ' +'; }
+li > a:only-child:after { content: ''; }
+
+
+/* Tools menu */
