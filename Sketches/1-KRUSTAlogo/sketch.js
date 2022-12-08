@@ -86,28 +86,14 @@ function draw() {
   // tend to be between 0 and 0.5
   let barHeight = map(level, 0, 0.25, 0, height);
   rect(10, height - barHeight, 3, barHeight)
-  /*rect(xoff, height - barHeight, xstep, barHeight);
-  xoff += xstep;
-  if (xoff > width) {
-    xoff = 0;
-  }*/
+
   
-  
-  /*
-  text('K', 150, 400 - mic.getLevel() * 100);
-  text('R', 250, 400 - mic.getLevel() * 2000);
-  text('U', 335, 400 - mic.getLevel() * 4000);
-  text('S', 450, 400 - mic.getLevel() * 4000);
-  text('T', 540, 400 - mic.getLevel() * 2000);
-  text('A', 630, 400 - mic.getLevel() * 100);
-  */
-  
-  text('K', 140, 400 - barHeight * 0.3);
-  text('R', 250, 400 - barHeight * 0.5);
-  text('U', 340, 400 - barHeight * 0.65);
-  text('S', 450, 400 - barHeight * 0.65);
-  text('T', 540, 400 - barHeight * 0.5);
-  text('A', 630, 400 - barHeight * 0.3);
+  text('K', 140, 450 - barHeight * 0.2);
+  text('R', 240, 450 - barHeight * 0.4);
+  text('U', 340, 450 - barHeight * 0.65);
+  text('S', 443, 450 - barHeight * 0.65);
+  text('T', 540, 450 - barHeight * 0.4);
+  text('A', 630, 450 - barHeight * 0.2);
   
   
 }
