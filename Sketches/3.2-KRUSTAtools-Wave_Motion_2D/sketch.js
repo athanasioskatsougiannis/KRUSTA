@@ -134,24 +134,25 @@ function drawMyDesign() {
 
   myCheckedEvent();
 
-  for(var j = 0; j<lineCount; j++){
+  //for(var j = 0; j<lineCount; j++){
     for(var i = 0; i < inpText.length; i++){
-      yWave = sin(frameCount*yWaveSpeed + i*yWaveLength + j*yWaveOffset) * yWaveSize;
-      yWavePost = sin(frameCount*yWaveSpeed + (i+1)*yWaveLength + j*yWaveOffset) * yWaveSize;
-      let angleAdjust = atan2(yWavePost-yWave,tracking);
-    
+      yWave = sin(frameCount*yWaveSpeed + i*yWaveLength + 2*yWaveOffset) * yWaveSize;
+      yWavePost = sin(frameCount*yWaveSpeed + (i+1)*yWaveLength + 2*yWaveOffset) * yWaveSize;
+      //myCheckedRotation(); //If I put the rotation function here there are nice effects
+      //let angleAdjust = atan2(yWavePost-yWave,tracking);
+
       myScaledCanvas.fill(Fcolor);
       myScaledCanvas.push();
-      myScaledCanvas.translate(i*tracking,j*leading);
-      
+      myScaledCanvas.translate(i*tracking,2*leading);
       myScaledCanvas.translate(0,yWave);
-      myScaledCanvas.rotate(angleAdjust);
+      //myCheckedRotation();
+      //myScaledCanvas.rotate(angleAdjust*20);
       // Reposition matrix to place the rotation point of the type in the middle of the X-Height (err... cap height)            
       myScaledCanvas.translate(0,fontHeight/2);
       myScaledCanvas.text(inpText.charAt(i),0,0);
       myScaledCanvas.pop();
     }
-  }
+  //}
   
 }
 
@@ -209,6 +210,11 @@ function createControlPanel() {
   selF.selected('Thin');
   selF.changed(mySelectFONT);
 
+  //Letters' rotation feature
+  //createP('Rotation').position(width + 370, 370);
+  //checkboxR = createCheckbox('', false); checkboxR.position(width + 360, 400).style('padding','6px').style('border-radius','2px');
+  //checkboxR.changed(myCheckedRotation);
+
   //Wave
   //Left column
   createP('Wave Size').position(width + 40, 460);
@@ -246,15 +252,15 @@ function createControlPanel() {
 
   //Animation options
   createP('Wide').position(width + 387, 522);
-  checkboxW = createCheckbox('', false); checkboxW.position(width + 360, 530).style('padding','6px').style('border-radius','2px')
+  checkboxW = createCheckbox('', false); checkboxW.position(width + 360, 530).style('padding','6px').style('border-radius','2px');
   checkboxW.changed(myCheckedEvent);
 
   createP('Tall').position(width + 457, 522);
-  checkboxT = createCheckbox('', false); checkboxT.position(width + 430, 530).style('padding','6px').style('border-radius','2px')
+  checkboxT = createCheckbox('', false); checkboxT.position(width + 430, 530).style('padding','6px').style('border-radius','2px');
   checkboxT.changed(myCheckedEvent);
 
   createP('Custom').position(width + 387, 550);
-  checkboxCustom = createCheckbox('', false); checkboxCustom.position(width + 360, 557).style('padding','6px').style('border-radius','2px')
+  checkboxCustom = createCheckbox('', false); checkboxCustom.position(width + 360, 557).style('padding','6px').style('border-radius','2px');
   checkboxCustom.changed(myCheckedEvent);  
 
   ipnAnimStart = createInput('');
@@ -448,6 +454,15 @@ function MotionC() {
 function MotionR() {
   myScaledCanvas.reset();
   BGcolorPicker.value('#FB5100'); FcolorPicker.value('#222823');
+}
+
+function myCheckedRotation() {
+  if (checkboxR.checked()) {
+    let angleAdjust = atan2(yWavePost-yWave,tracking);
+    myScaledCanvas.rotate(angleAdjust*20);
+  } else {
+    myScaledCanvas.rotate(0);
+  }
 }
 
 
