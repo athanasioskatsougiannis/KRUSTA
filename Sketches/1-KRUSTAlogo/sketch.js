@@ -60,12 +60,8 @@ function setup() {
   //Start mic recording
   mic = new p5.AudioIn();
   mic.start();  
-  amp = new p5.Amplitude();
+  amp = new p5.Amplitude(smoothing, bins);
   amp.setInput(mic); 
-  fft = new p5.FFT(smoothing, bins);
-  fft.setInput(mic);
-
-
 }
 
 
