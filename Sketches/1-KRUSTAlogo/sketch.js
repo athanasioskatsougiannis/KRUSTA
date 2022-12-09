@@ -64,11 +64,13 @@ function setup() {
 function draw() {
   
   //Input text
-  inpText = String(inp.value());
-  inpStart = String(inpWaveStart.value());
-  inpEnd = String(inpWaveEnd.value());
+  //inpText = String(inp.value());
+  inpLStart = String(inpWaveLogoStart.value());
+  inpLEnd = String(inpWaveLogoEnd.value());
+  inpTStart = String(inpWaveTextStart.value());
+  inpTEnd = String(inpWaveTextEnd.value());
   wave = waveSlider.value();
-  createP(wave).position(885, 265).style('background','white');  
+  createP(wave).position(885, 170).style('background','white');  
   
   fontSize = fontSizeSlider.value();
   BGcolor = BGcolorPicker.value();
@@ -96,45 +98,52 @@ function draw() {
 }
 
 function createControlPanel() {
-  
-  checkboxText = createCheckbox('', false); checkboxText.position(width + 135, 168);
-  checkboxText.changed(myCheckedEventWave);
-  inp = createInput('');
-  inp.position(width + 40, 190);
-  inp.size(390,25);
 
-  inpWaveStart = createInput('');
-  inpWaveStart.position(width + 165, 285);
-  inpWaveStart.size(27,15);  
-
-  inpWaveEnd = createInput('');
-  inpWaveEnd.position(width + 210, 285);
-  inpWaveEnd.size(27,15); 
-
-
-  createP('Custom').position(width + 180, 245);
-  checkboxWaveAnimC = createCheckbox('', false); checkboxWaveAnimC.position(width + 160, 258);
-  checkboxWaveAnimC.changed(myCheckedEventWave);
-  createP('Mic').position(width + 305, 245);
-  checkboxWaveAnimM = createCheckbox('', false); checkboxWaveAnimM.position(width + 285, 258);
-  checkboxWaveAnimM.changed(myCheckedEventWave);
-  
-
-  //Canvas size
-  /*createP('Canvas size').position(width + 40, 245);
-  selC = createSelect();
-  selC.position(width + 40, 280);
-  selC.option('Square');
-  selC.option('Wide');
-  selC.option('Tall');
-  selC.selected('Square');
-  selC.changed(setCanvasSize);*/
-
-
-  createP('Wave').position(width + 40, 245);
+  createP('Wave').position(width + 40, 150);
   waveSlider = createSlider(0,400,90,0.01);
-  waveSlider.position(width + 40, 285);
+  waveSlider.position(width + 40, 190);
   waveSlider.style('width','68px');
+
+  createP('LOGO').position(width + 170, 150).style('text-decoration','underline');
+  createP('TEXT').position(width + 290, 150).style('text-decoration','underline');
+
+
+  //LOGO
+  createP('Mic').position(width + 190, 185);
+  checkboxWaveLogoM = createCheckbox('', false); checkboxWaveLogoM.position(width + 168, 198);
+  checkboxWaveLogoM.changed(myCheckedEventWave);
+  
+  createP('Custom').position(width + 190, 225);
+  checkboxWaveLogoC = createCheckbox('', false); checkboxWaveLogoC.position(width + 168, 238);
+  checkboxWaveLogoC.changed(myCheckedEventWave);
+
+  inpWaveLogoStart = createInput('');
+  inpWaveLogoStart.position(width + 172, 263);
+  inpWaveLogoStart.size(27,15);  
+  inpWaveLogoEnd = createInput('');
+  inpWaveLogoEnd.position(width + 215, 263);
+  inpWaveLogoEnd.size(27,15); 
+  
+
+  //TEXT
+  createP('Mic').position(width + 310, 185);
+  checkboxWaveTextM = createCheckbox('', false); checkboxWaveTextM.position(width + 288, 198);
+  checkboxWaveTextM.changed(myCheckedEventWave);
+  
+  createP('Custom').position(width + 310, 225);
+  checkboxWaveTextC = createCheckbox('', false); checkboxWaveTextC.position(width + 288, 238);
+  checkboxWaveTextC.changed(myCheckedEventWave);
+
+  inpWaveTextStart = createInput('');
+  inpWaveTextStart.position(width + 292, 263);
+  inpWaveTextStart.size(27,15);  
+  inpWaveTextEnd = createInput('');
+  inpWaveTextEnd.position(width + 335, 263);
+  inpWaveTextEnd.size(27,15); 
+
+
+  
+
   
   createP('Font colour').position(width + 40, 310);
   FcolorPicker = createColorPicker('#222823'); FcolorPicker.position(width + 40, 345).style('padding','0px').style('width', '70px');
@@ -173,28 +182,6 @@ function setCanvasSize() {
   redraw();
   canvas = createCanvas(wS, hS);
   canvas.position(20, 20);
-
-  /*if (selCANVAS == 'Square') {
-    wS = squareFrame.width / 5;
-    hS = squareFrame.height / 5;
-    redraw();
-    canvas = createCanvas(wS, hS);
-    canvas.position(20, 20);
-    } 
-    else if (selCANVAS == 'Wide') {
-    wW = wideFrame.width / 5;
-    hW = wideFrame.height / 5;
-    redraw();
-    canvas = createCanvas(wW, hW);
-    canvas.position(20, 20);
-    } 
-    else if (selCANVAS == 'Tall') {
-    wT = tallFrame.width / 5;
-    hT = tallFrame.height / 5;
-    redraw();
-    canvas = createCanvas(wT, hT);
-    canvas.position(20, 20);
-  }*/
 }
 
 function myCheckedEventC() {
@@ -242,8 +229,8 @@ function myCheckedEvent() {
 }
 
 function myCheckedEventWave() {
-  if (checkboxWaveAnimM.checked()) {
-    checkboxWaveAnimC.checked(false);
+  if (checkboxWaveLogoM.checked()) {
+    checkboxWaveLogoC.checked(false);
     let level = amp.getLevel();
     // adjust map values to taste; actual levels
     // tend to be between 0 and 0.5
@@ -257,11 +244,11 @@ function myCheckedEventWave() {
     text('T', 540, height/2+80 - barHeight * 0.4);
     text('A', 630, height/2+80 - barHeight * 0.2);
 
-  } else if (checkboxWaveAnimC.checked()){
-    checkboxWaveAnimM.checked(false);
+  } else if (checkboxWaveLogoC.checked()){
+    checkboxWaveLogoM.checked(false);
 
     redraw();
-    let t = map(sin(angle),-1,1,inpStart,inpEnd);
+    let t = map(sin(angle),-1,1,inpLStart,inpLEnd);
     waveSlider.value(t);
     angle += 0.015;
 
@@ -271,18 +258,27 @@ function myCheckedEventWave() {
     text('S', 443, height/2+80 - wave * 0.65);
     text('T', 540, height/2+80 - wave * 0.4);
     text('A', 630, height/2+80 - wave * 0.2);
-  } else if (checkboxText.checked()) {
+  } else if (checkboxWaveTextM.checked()){
     let level = amp.getLevel();
     let barHeight = map(level, 0, 0.25, 0, height);
-    rect(2, height - barHeight, 3, barHeight);
+    text('C', 120, height/2+80 - barHeight * 0.2);
+    text('O', 230, height/2+80 - barHeight * 0.4);
+    text('M', 355, height/2+80 - barHeight * 0.65);
+    text('I', 443, height/2+80 - barHeight * 0.65);
+    text('N', 518, height/2+80 - barHeight * 0.4);
+    text('G', 630, height/2+80 - barHeight * 0.2);
+  } else if (checkboxWaveTextC.checked()){
+    redraw();
+    let t = map(sin(angle),-1,1,inpTStart,inpTEnd);
+    waveSlider.value(t);
+    angle += 0.015;
 
-    for(var i = 0; i < inpText.length; i++){
-      fill(Fcolor);
-      push();
-      translate(i*85+200, 400+i*(-barHeight));
-      text(inpText.charAt(i),0,0);
-      pop();
-    }
+    text('C', 120, height/2+80 - wave * 0.2);
+    text('O', 230, height/2+80 - wave * 0.4);
+    text('M', 355, height/2+80 - wave * 0.65);
+    text('I', 443, height/2+80 - wave * 0.65);
+    text('N', 518, height/2+80 - wave * 0.4);
+    text('G', 630, height/2+80 - wave * 0.2);
   } else {
     text('K', 140, height/2+80 - wave * 0.2);
     text('R', 240, height/2+80 - wave * 0.4);
