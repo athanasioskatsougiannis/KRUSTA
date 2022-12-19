@@ -97,7 +97,7 @@ function drawMyDesign() {
   var output = '';
   console.log(myTextArea.value());
   let inpText = myTextArea.value();
-  let myText = split(inpText, ',');
+  let myText = split(inpText, ', ');
   for (let i = 0; i < myText.length; i++) {
     myScaledCanvas.text(myText[i], 50, 60+i*40, width - (random(2,600)), height-100);
     //h += textWidth(myText[i]);
